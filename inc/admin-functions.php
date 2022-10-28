@@ -12,7 +12,7 @@ if ( ! class_exists( 'Redux' ) ) {
 }
 
 // This is your option name where all the Redux data is stored.
-$opt_name = 'redux_demo';  // YOU MUST CHANGE THIS.  DO NOT USE 'redux_demo' IN YOUR PROJECT!!!
+$opt_name = 'BLightOne_Admin';  
 
 // Uncomment to disable demo mode.
 /* Redux::disable_demo(); */  // phpcs:ignore Squiz.PHP.CommentedOutCode
@@ -85,10 +85,10 @@ $args = array(
 	'allow_sub_menu'            => true,
 
 	// The text to appear in the admin menu.
-	'menu_title'                => esc_html__( 'Sample Options', 'your-textdomain-here' ),
+	'menu_title'                => esc_html__( 'Theme Options', 'blightone' ),
 
 	// The text to appear on the page title.
-	'page_title'                => esc_html__( 'Sample Options', 'your-textdomain-here' ),
+	'page_title'                => esc_html__( 'Theme Options', 'blightone' ),
 
 	// Disable to create your own Google fonts loader.
 	'disable_google_fonts_link' => false,
@@ -100,13 +100,13 @@ $args = array(
 	'admin_bar_icon'            => 'dashicons-portfolio',
 
 	// Priority for the admin bar menu.
-	'admin_bar_priority'        => 50,
+	'admin_bar_priority'        => 90,
 
 	// Sets a different name for your global variable other than the opt_name.
 	'global_variable'           => $opt_name,
 
 	// Show the time the page took to load, etc. (forced on while on localhost or when WP_DEBUG is enabled).
-	'dev_mode'                  => true,
+	'dev_mode'                  => false,
 
 	// Enable basic customizer support.
 	'customizer'                => true,
@@ -118,7 +118,7 @@ $args = array(
 	'disable_save_warn'         => false,
 
 	// Order where the menu appears in the admin area. If there is any conflict, something will not show. Warning.
-	'page_priority'             => 90,
+	'page_priority'             => 59,
 
 	// For a full list of options, visit: http://codex.wordpress.org/Function_Reference/add_submenu_page#Parameters.
 	'page_parent'               => 'themes.php',
@@ -177,35 +177,7 @@ $args = array(
 	// See: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display.
 	'font_display'              => 'swap',
 
-	// HINTS.
-	'hints'                     => array(
-		'icon'          => 'el el-question-sign',
-		'icon_position' => 'right',
-		'icon_color'    => 'lightgray',
-		'icon_size'     => 'normal',
-		'tip_style'     => array(
-			'color'   => 'red',
-			'shadow'  => true,
-			'rounded' => false,
-			'style'   => '',
-		),
-		'tip_position'  => array(
-			'my' => 'top left',
-			'at' => 'bottom right',
-		),
-		'tip_effect'    => array(
-			'show' => array(
-				'effect'   => 'slide',
-				'duration' => '500',
-				'event'    => 'mouseover',
-			),
-			'hide' => array(
-				'effect'   => 'slide',
-				'duration' => '500',
-				'event'    => 'click mouseleave',
-			),
-		),
-	),
+	
 
 	// FUTURE -> Not in use yet, but reserved or partially implemented. Use at your own risk.
 	// possible: options, theme_mods, theme_mods_expanded, transient. Not fully functional, warning!
@@ -215,67 +187,10 @@ $args = array(
 );
 
 
-// ADMIN BAR LINKS -> Setup custom links in the admin bar menu as external items.
-// PLEASE CHANGE THEME BEFORE RELEASING YOUR PRODUCT!!
-// If these are left unchanged, they will not display in your panel!
-$args['admin_bar_links'][] = array(
-	'id'    => 'redux-docs',
-	'href'  => '//devs.redux.io/',
-	'title' => __( 'Documentation', 'your-textdomain-here' ),
-);
 
-$args['admin_bar_links'][] = array(
-	'id'    => 'redux-support',
-	'href'  => '//github.com/ReduxFramework/redux-framework/issues',
-	'title' => __( 'Support', 'your-textdomain-here' ),
-);
 
-$args['admin_bar_links'][] = array(
-	'id'    => 'redux-extensions',
-	'href'  => 'redux.io/extensions',
-	'title' => __( 'Extensions', 'your-textdomain-here' ),
-);
 
-// SOCIAL ICONS -> Setup custom links in the footer for quick links in your panel footer icons.
-// PLEASE CHANGE THEME BEFORE RELEASING YOUR PRODUCT!!
-// If these are left unchanged, they will not display in your panel!
-$args['share_icons'][] = array(
-	'url'   => '//github.com/ReduxFramework/ReduxFramework',
-	'title' => 'Visit us on GitHub',
-	'icon'  => 'el el-github',
-);
-$args['share_icons'][] = array(
-	'url'   => '//www.facebook.com/pages/Redux-Framework/243141545850368',
-	'title' => 'Like us on Facebook',
-	'icon'  => 'el el-facebook',
-);
-$args['share_icons'][] = array(
-	'url'   => '//twitter.com/reduxframework',
-	'title' => 'Follow us on Twitter',
-	'icon'  => 'el el-twitter',
-);
-$args['share_icons'][] = array(
-	'url'   => '//www.linkedin.com/company/redux-framework',
-	'title' => 'Find us on LinkedIn',
-	'icon'  => 'el el-linkedin',
-);
 
-// Panel Intro text -> before the form.
-if ( ! isset( $args['global_variable'] ) || false !== $args['global_variable'] ) {
-	if ( ! empty( $args['global_variable'] ) ) {
-		$v = $args['global_variable'];
-	} else {
-		$v = str_replace( '-', '_', $args['opt_name'] );
-	}
-
-	// translators:  Panel opt_name.
-	$args['intro_text'] = '<p>' . sprintf( esc_html__( 'Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: $%1$s', 'your-textdomain-here' ), '<strong>' . $v . '</strong>' ) . '<p>';
-} else {
-	$args['intro_text'] = '<p>' . esc_html__( 'This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.', 'your-textdomain-here' ) . '</p>';
-}
-
-// Add content after the form.
-$args['footer_text'] = '<p>' . esc_html__( 'This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.', 'your-textdomain-here' ) . '</p>';
 
 Redux::set_args( $opt_name, $args );
 
@@ -283,310 +198,196 @@ Redux::set_args( $opt_name, $args );
  * ---> END ARGUMENTS
  */
 
-/*
- * ---> START HELP TABS
- */
-$help_tabs = array(
-	array(
-		'id'      => 'redux-help-tab-1',
-		'title'   => esc_html__( 'Theme Information 1', 'your-textdomain-here' ),
-		'content' => '<p>' . esc_html__( 'This is the tab content, HTML is allowed.', 'your-textdomain-here' ) . '</p>',
-	),
-	array(
-		'id'      => 'redux-help-tab-2',
-		'title'   => esc_html__( 'Theme Information 2', 'your-textdomain-here' ),
-		'content' => '<p>' . esc_html__( 'This is the tab content, HTML is allowed.', 'your-textdomain-here' ) . '</p>',
-	),
-);
-Redux::set_help_tab( $opt_name, $help_tabs );
 
-// Set the help sidebar.
-$content = '<p>' . esc_html__( 'This is the sidebar content, HTML is allowed.', 'your-textdomain-here' ) . '</p>';
 
-Redux::set_help_sidebar( $opt_name, $content );
 
-/*
- * <--- END HELP TABS
- */
 
 /*
  * ---> START SECTIONS
  */
 
-// -> START Basic Fields
+// -> START General Setting Section
 Redux::set_section(
 	$opt_name,
 	array(
-		'title'            => esc_html__( 'Basic Fields', 'your-textdomain-here' ),
-		'id'               => 'basic',
-		'desc'             => esc_html__( 'These are really basic fields!', 'your-textdomain-here' ),
+		'title'            => esc_html__( 'General Setting', 'blightone' ),
+		'id'               => 'GeneralSetting',
+		'desc'             => esc_html__( 'These are really basic fields!', 'blightone' ),
 		'customizer_width' => '400px',
 		'icon'             => 'el el-home',
 	)
 );
 
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/checkbox.php';
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/radio.php';
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/sortable.php';
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/text.php';
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/multi-text.php';
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/password.php';
-require_once Redux_Core::$dir . '../sample/sections/basic-fields/textarea.php';
-
-// -> START Editors.
+// -> START Fonts Setting Fields
 Redux::set_section(
 	$opt_name,
 	array(
-		'title'            => esc_html__( 'Editors', 'your-textdomain-here' ),
-		'id'               => 'editor',
-		'customizer_width' => '500px',
-		'icon'             => 'el el-edit',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/editors/wordpress-editor.php';
-require_once Redux_Core::$dir . '../sample/sections/editors/ace-editor.php';
-
-// -> START Color Selection.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Color Selection', 'your-textdomain-here' ),
-		'id'    => 'color',
-		'icon'  => 'el el-brush',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/color-selection/color.php';
-require_once Redux_Core::$dir . '../sample/sections/color-selection/color-gradient.php';
-require_once Redux_Core::$dir . '../sample/sections/color-selection/color-rgba.php';
-require_once Redux_Core::$dir . '../sample/sections/color-selection/link-color.php';
-require_once Redux_Core::$dir . '../sample/sections/color-selection/palette.php';
-require_once Redux_Core::$dir . '../sample/sections/color-selection/color-palette.php';
-
-// -> START Design Fields.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Design Fields', 'your-textdomain-here' ),
-		'id'    => 'design',
-		'icon'  => 'el el-wrench',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/design-fields/background.php';
-require_once Redux_Core::$dir . '../sample/sections/design-fields/box-shadow.php';
-require_once Redux_Core::$dir . '../sample/sections/design-fields/border.php';
-require_once Redux_Core::$dir . '../sample/sections/design-fields/dimensions.php';
-require_once Redux_Core::$dir . '../sample/sections/design-fields/spacing.php';
-
-// -> START Media Uploads.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Media Uploads', 'your-textdomain-here' ),
-		'id'    => 'media',
-		'icon'  => 'el el-picture',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/media-uploads/gallery.php';
-require_once Redux_Core::$dir . '../sample/sections/media-uploads/media.php';
-require_once Redux_Core::$dir . '../sample/sections/media-uploads/multi-media.php';
-require_once Redux_Core::$dir . '../sample/sections/media-uploads/slides.php';
-
-// -> START Presentation Fields.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Presentation Fields', 'your-textdomain-here' ),
-		'id'    => 'presentation',
-		'icon'  => 'el el-screen',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/presentation-fields/divide.php';
-require_once Redux_Core::$dir . '../sample/sections/presentation-fields/info.php';
-require_once Redux_Core::$dir . '../sample/sections/presentation-fields/section.php';
-
-Redux::set_section(
-	$opt_name,
-	array(
-		'id'   => 'presentation-divide-sample',
-		'type' => 'divide',
-	)
-);
-
-// -> START Switch & Button Set.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Switch / Button Set', 'your-textdomain-here' ),
-		'id'    => 'switch_buttonset',
-		'icon'  => 'el el-cogs',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/switch-button/button-set.php';
-require_once Redux_Core::$dir . '../sample/sections/switch-button/switch.php';
-
-// -> START Select Fields.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Select Fields', 'your-textdomain-here' ),
-		'id'    => 'select',
-		'icon'  => 'el el-list-alt',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/select-fields/select.php';
-require_once Redux_Core::$dir . '../sample/sections/select-fields/image-select.php';
-require_once Redux_Core::$dir . '../sample/sections/select-fields/select-image.php';
-
-// -> START Slider / Spinner.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Slider / Spinner', 'your-textdomain-here' ),
-		'id'    => 'slider_spinner',
-		'icon'  => 'el el-adjust-alt',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/slider-spinner/slider.php';
-require_once Redux_Core::$dir . '../sample/sections/slider-spinner/spinner.php';
-
-// -> START Typography.
-require_once Redux_Core::$dir . '../sample/sections/typography/typography.php';
-
-// -> START Additional Types.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Additional Types', 'your-textdomain-here' ),
-		'id'    => 'additional',
-		'icon'  => 'el el-magic',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/additional-types/date.php';
-require_once Redux_Core::$dir . '../sample/sections/additional-types/date-time-picker.php';
-require_once Redux_Core::$dir . '../sample/sections/additional-types/sorter.php';
-require_once Redux_Core::$dir . '../sample/sections/additional-types/raw.php';
-
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Advanced Features', 'your-textdomain-here' ),
-		'icon'  => 'el el-thumbs-up',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/advanced-features/callback.php';
-
-// -> START Validation.
-require_once Redux_Core::$dir . '../sample/sections/advanced-features/field-validation.php';
-
-// -> START Sanitizing.
-require_once Redux_Core::$dir . '../sample/sections/advanced-features/field-sanitizing.php';
-
-// -> START Required.
-require_once Redux_Core::$dir . '../sample/sections/advanced-features/field-required-linking.php';
-
-require_once Redux_Core::$dir . '../sample/sections/advanced-features/wpml-integration.php';
-
-// -> START Disabling.
-Redux::set_section(
-	$opt_name,
-	array(
-		'title' => esc_html__( 'Disabling', 'your-textdomain-here' ),
-		'icon'  => 'el el-lock',
-	)
-);
-
-require_once Redux_Core::$dir . '../sample/sections/disabling/disable-field.php';
-require_once Redux_Core::$dir . '../sample/sections/disabling/disable-section.php';
-
-require_once Redux_Core::$dir . '../sample/sections/accordion/accordion.php';
-require_once Redux_Core::$dir . '../sample/sections/js-button/js-button.php';
-require_once Redux_Core::$dir . '../sample/sections/repeater/repeater.php';
-require_once Redux_Core::$dir . '../sample/sections/search/search.php';
-require_once Redux_Core::$dir . '../sample/sections/shortcodes/shortcodes.php';
-require_once Redux_Core::$dir . '../sample/sections/social-profiles/social-profiles.php';
-
-// -> START Pro Fields.
-if ( class_exists( 'Redux_Pro' ) ) {
-	Redux::set_section(
-		$opt_name,
-		array(
-			'title' => esc_html__( 'Redux Pro Fields', 'your-textdomain-here' ),
-			'id'    => 'redux-pro-fields',
-			'icon'  => 'el el-redux',
-			'class' => 'pro_highlight',
-			'desc'  => esc_html__( 'For full documentation on this field, visit: ', 'your-textdomain-here' ) . '<a href="https://devs.redux.io/premium/" target="_blank">https://devs.redux.io/premium/</a>',
-		)
-	);
-
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/color-scheme.php';
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/custom-fonts.php';
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/google-maps.php';
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/icon-select.php';
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/taxonomy.php';
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/users.php';
-	require_once Redux_Core::$dir . '../sample/sections/pro-fields/widget-areas.php';
-}
-
-/**
- * Metaboxes
- */
-require_once Redux_Core::$dir . '../sample/metaboxes.php';
-
-/**
- * Raw README
- */
-if ( file_exists( $dir . '/../README.md' ) ) {
-	$section = array(
-		'icon'   => 'el el-list-alt',
-		'title'  => esc_html__( 'Documentation', 'your-textdomain-here' ),
-		'fields' => array(
+		'title'            => esc_html__( 'Fonts Setting', 'blightone' ),
+		'id'               => 'BlightOneFontsSetting',
+		'subsection'       => true,
+		'customizer_width' => '450px',
+		'desc'             => esc_html__( 'For full documentation on this field', 'blightone' ),
+		'icon'   => 'el el-font',
+		'fields'           => array(
 			array(
-				'id'           => 'opt-raw-documentation',
-				'type'         => 'raw',
-				'markdown'     => true,
-				'content_path' => dirname( __FILE__ ) . '/../README.md', // FULL PATH, not relative please.
-			),
-		),
-	);
-
-	Redux::set_section( $opt_name, $section );
-}
-
-Redux::set_section(
-	$opt_name,
-	array(
-		'icon'            => 'el el-list-alt',
-		'title'           => esc_html__( 'Customizer Only', 'your-textdomain-here' ),
-		'desc'            => '<p class="description">' . esc_html__( 'This Section should be visible only in Customizer', 'your-textdomain-here' ) . '</p>',
-		'customizer_only' => true,
-		'fields'          => array(
-			array(
-				'id'              => 'opt-customizer-only',
-				'type'            => 'select',
-				'title'           => esc_html__( 'Customizer Only Option', 'your-textdomain-here' ),
-				'subtitle'        => esc_html__( 'The subtitle is NOT visible in customizer', 'your-textdomain-here' ),
-				'desc'            => esc_html__( 'The field desc is NOT visible in customizer.', 'your-textdomain-here' ),
-				'customizer_only' => true,
-				'options'         => array(
-					'1' => esc_html__( 'Opt 1', 'your-textdomain-here' ),
-					'2' => esc_html__( 'Opt 2', 'your-textdomain-here' ),
-					'3' => esc_html__( 'Opt 3', 'your-textdomain-here' ),
+				'id'                => 'opt-typography-body',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'Body Font', 'blightone' ),
+				'subtitle'          => esc_html__( 'Specify the body font properties.', 'blightone' ),
+				'google'            => true,
+				'font_family_clear' => false,
+				'default'           => array(
+					'color'       => '#dd9933',
+					'font-size'   => '30px',
+					'font-family' => 'Arial, Helvetica, sans-serif',
+					'font-weight' => 'Normal',
 				),
-				'default'         => '2',
-			),
+				'output'            => array( 'p' ),
+			)
+
 		),
 	)
 );
+// -> End Fonts Setting Fields
+
+// -> End  General Setting Section
+
+
+// -> START Header Setting  section
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'Header Setting', 'blightone' ),
+		'id'               => 'HeaderSetting',
+		'desc'             => esc_html__( 'These are really basic fields!', 'blightone' ),
+		'customizer_width' => '400px',
+		'icon'             => 'el el-home',
+	)
+);
+
+
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'Header Setting', 'blightone' ),
+		'id'               => 'basic-checkbox2',
+		'subsection'       => true,
+		'customizer_width' => '450px',
+		'desc'             => esc_html__( 'Customize website top manu bar.', 'blightone' ),
+		'fields'           => array(
+            // -> START logo Setting Fields
+			array(
+				'id'        => 'blight_header_logo',
+				'type'      => 'media',
+				'url'       => true,
+				'title'     => __('Logo', 'blightone' ),
+				'compiler'  => 'false',
+				'subtitle'  => __('Upload your logo', 'blightone' ),
+				'default'   =>  '1',
+			),
+			// -> START background Setting Fields
+			array(
+				'id'        => 'blight_header_color',
+				'type'      => 'color_rgba',
+				'url'       => true,
+				'title'     => __('Header Background Color', 'blightone' ),
+				'compiler'  => 'false',
+				'subtitle'  => __('Pick a background color', 'blightone' ),
+				'output'    => array('background-color' => '.site-header'),
+				//'compiler'  => array('color' => '.site-header, .site-footer', 'background-color' => '.nav-bar'),
+				'default'   => array(
+					'color'     => '#fdfdfd',
+					'alpha'     => 1
+				),
+			),
+			// -> START background Setting Fields
+			array(
+				'id'        => 'blight_header_text_color',
+				'type'      => 'color_rgba',
+				'url'       => true,
+				'title'     => __('Header text Color', 'blightone' ),
+				'compiler'  => 'false',
+				'subtitle'  => __('Pick a text color', 'blightone' ),
+				'output'    => array('color' => '.colorfont'),
+				//'compiler'  => array('color' => '.site-header, .site-footer', 'background-color' => '.nav-bar'),
+				'default'   => array(
+					'color'     => '#fdfdfd',
+					'alpha'     => 1
+				),
+			),
+			
+			
+		),
+	)
+);
+
+
+// -> End  Header Setting  section
+
+// -> START Footer Setting   Fields
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'Footer Setting', 'blightone' ),
+		'id'               => 'FooterSetting',
+		'desc'             => esc_html__( 'Customize website footer section', 'blightone' ),
+		'customizer_width' => '400px',
+		'icon'             => 'el el-home',
+	)
+);
+
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'Footer Setting', 'blightone' ),
+		'id'               => 'Blightone-footer',
+		'subsection'       => true,
+		'customizer_width' => '450px',
+		'desc'             => esc_html__( 'Customize website footer section ', 'blightone' ),
+		'fields'           => array(
+			 // -> START footer logo Fields
+			 array(
+				'id'        => 'blight-footer-logo',
+				'type'      => 'media',
+				'url'       => true,
+				'title'     => __('Footer Logo', 'blightone' ),
+				'compiler'  => 'false',
+				'subtitle'  => __('Upload footer logo', 'blightone' ),
+				'default'   =>  '1',
+			),
+			// -> START footer text Fields
+			array(
+				'id'            => 'blightone-footer-text',
+				'type'          => 'editor',
+				'media_buttons' => 'false',
+				'title'         => esc_html__( 'Footer Text', 'blightone' ),
+				'subtitle'      => esc_html__( 'Input text', 'blightone' ),
+				'desc'          => esc_html__( 'This is the description field will show on website top footer.', 'blightone' ),
+				'default'       => '', // 1 = on | 0 = off.
+			),
+			// -> START footer Copyright Fields
+			array(
+				'id'            => 'blightone-footer-copyright-text',
+				'type'          => 'text',
+				'media_buttons' => 'false',
+				'title'         => esc_html__( 'Copyright Text', 'blightone' ),
+				'subtitle'      => esc_html__( 'Input text', 'blightone' ),
+				'desc'          => esc_html__( 'This is the description field will show on website footer.', 'blightone' ),
+				'default'       => '', // 1 = on | 0 = off.
+			),
+			
+		),
+	)
+);
+
+
+// -> End  General Setting Fields
+
+
+
+
+
+
 
 /*
  * <--- END SECTIONS
@@ -688,8 +489,8 @@ if ( ! function_exists( 'dynamic_section' ) ) {
 	 */
 	function dynamic_section( array $sections ): array {
 		$sections[] = array(
-			'title'  => esc_html__( 'Section via hook', 'your-textdomain-here' ),
-			'desc'   => '<p class="description">' . esc_html__( 'This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.', 'your-textdomain-here' ) . '</p>',
+			'title'  => esc_html__( 'Section via hook', 'blightone' ),
+			'desc'   => '<p class="description">' . esc_html__( 'This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.', 'blightone' ) . '</p>',
 			'icon'   => 'el el-paper-clip',
 
 			// Leave this as a blank section, no options just some intro text set above.
@@ -725,7 +526,7 @@ if ( ! function_exists( 'change_defaults' ) ) {
 	 * @return array
 	 */
 	function change_defaults( array $defaults ): array {
-		$defaults['str_replace'] = esc_html__( 'Testing filter hook!', 'your-textdomain-here' );
+		$defaults['str_replace'] = esc_html__( 'Testing filter hook!', 'blightone' );
 
 		return $defaults;
 	}

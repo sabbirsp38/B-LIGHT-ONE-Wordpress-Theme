@@ -254,24 +254,195 @@ p {
 /*-------------------------------------------
   -- Navbar
 -------------------------------------------*/
-
-.navbar {
-    font-size: .875rem;
-    font-weight: 500;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-    transition: .3s ease;
-    background: green;
-}
-[class*="navbar-expand"] .navbar-nav .nav-link {
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
+.main-menu{
+    padding: 0;
 }
 
+.main-menu ul{  
+    padding: 0; 
+    margin: 0; 
+    font-size: 18px; 
+    font-weight: 500; 
+    border-radius: 0;    
+}
+
+.main-menu ul li{ 
+    display: inline;  
+    margin: 0 5px 0 0;
+}
+
+.main-menu ul li:last-child{ 
+    margin: 0; 
+}
+
+.main-menu > ul li a,
+.navbar-light .navbar-nav .nav-link{  
+    color: #303030; 
+    text-decoration: none;
+    padding: 7px 15px 20px;
+}
+
+.main-menu ul li a.nav-link:first-child{ 
+    padding-left: 0 !important;
+}
+
+.main-menu ul li ul{
+    background-color: #000;
+}
+
+.main-menu ul li ul li{
+    margin: 0;
+}
+
+.main-menu ul li ul li a{
+    padding: 0.5rem;
+    color: rgb(17, 0, 0);
+}
+
+.main-menu .navbar-nav .active>.nav-link{ 
+    color: #CA2424; 
+}
+
+.main-menu .dropdown-item:focus, 
+.main-menu .dropdown-item:hover {
+    color: rgb(112, 38, 38);
+    background-color: #272c33;
+}
+
+.main-menu .dropdown:hover>.dropdown-menu, 
+.main-menu .dropup:hover>.dropdown-menu  {
+  display: block;
+}
+
+.main-menu .dropdown-item.active, 
+.main-menu .dropdown-item:active {
+    background-color: #d2335b;
+}
+
+.main-menu .navbar-toggler{
+    border: none;
+    padding-right: 0;  
+    background: #3a79f9;  
+}
+
+.main-menu .dropdown-toggle::after {
+    vertical-align: 0.155em;
+}
+
+.main-menu .navbar-toggler-icon {
+    background-image: url('img/hamburger-menu.svg');
+}
+
+.main-menu ul li .dropdown-menu .dropdown > a::after{
+    display: inline-block;
+    margin-left: 0.355em;
+    vertical-align: 0.2em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+
+.main-menu .dropdown-menu li { 
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-menu .depth_0{ 
+    top: 50px;
+    
+}
+.main-menu .depth_1 { 
+    top: 10px;
+    left: 100%;
+}
+.main-menu .depth_2 { 
+    top: 10px;
+    left: 100%;
+}
 .blightone-logo{
     width: 150px;
     height: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width: 767px) {
+
+
+    .main-menu{
+        border-top: 2px solid #f2f2f2;
+        padding: 10px; 
+        margin-top: 10px;       
+    }
+
+    .main-menu ul li{   
+        margin: 0;
+    } 
+
+    .main-menu .dropdown-menu{
+        display: block;
+        margin-left: 1rem;
+    }
+
+    .main-menu ul li .dropdown-menu .dropdown > a::before{
+        display: inline-block;
+        margin-right: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+        transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+    }
+
+    .main-menu ul li .dropdown-menu .dropdown > a::after{
+        display: none;
+    }
+
+    .main-menu .dropdown-menu .dropdown-menu{
+        margin-left: 0;
+    }
+
+    .main-menu .dropdown-menu .dropdown-menu a{
+        padding-left: 1rem;
+    }
+
+    .main-menu ul li a,
+    .navbar-light .navbar-nav .nav-link{ 
+        padding: 10px 0;
+    } 
+
+  
+
+}
+
+
 /*XL*/
 
 /*LG*/

@@ -20,7 +20,7 @@
 					</div> <!-- end of Column -->
 					<div class="col-md-4 col-lg-4 col-sm-4">
 						<div class="blightone-footer-logo-section">
-							<img class="blightone-footer-logo" src="logo.png">
+							<img class="blightone-footer-logo"  src="<?php global $BLightOne_Admin; echo''.$BLightOne_Admin['blight-footer-logo']['url']; ?>">
 						</div>
 					</div> <!-- end of Column -->  
 					<div class="col-md-4 col-lg-4 col-sm-4">
@@ -29,10 +29,10 @@
 					<!-- End of logo Line -->
 					<div class="col-md-12 col-lg-12 col-sm-12">
 						<div class="blightone-footer-dec">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet fringilla imperdiet cras pellentesque. Nisi aliquet interdum est, cum. Quam ac nisi, elit egestas ullamcorper nunc quam purus.
-							</p>
-
+						 <?php 
+						     global $BLightOne_Admin;
+						     echo''.$BLightOne_Admin['blightone-footer-text'];
+						?>
 						</div>
 					</div> <!-- end of Column -->  
 					<!-- Start Footer Bottom Scetion -->
@@ -44,7 +44,6 @@
 							</div>
 						<?php endif; ?>
 					</div> <!-- end of Column --> 
-					
 					<div class="col-md-3 col-lg-3 col-sm-3">
 					    <?php if( is_active_sidebar( 'blight-one-sidebar-footer2' ) ): ?>
 							<div class="blight-footer-column">
@@ -74,7 +73,12 @@
 				</div><!-- end of row -->
 				<!--end ts-box-->
 				<div class="text-center text-white py-4">
-					<small>© 2018 ThemeStarz, All Rights Reserved</small>
+					<small>
+						<?php 
+						     global $BLightOne_Admin;
+						     echo''.$BLightOne_Admin['blightone-footer-copyright-text'];
+						?>
+					</small>
 				</div>
 			</div>
 			<!--end container-->
